@@ -43,6 +43,7 @@ const Feed = () => {
       setPosts(data);
     }
     if(searchText===""){
+      console.log("Call!")
       fetchPosts();
     }else{
       const filteredPosts = mainPost.filter((p) => p.tag.includes(searchText) || p.creator.username.includes(searchText) || p.prompt.includes(searchText));
