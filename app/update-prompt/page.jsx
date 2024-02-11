@@ -1,5 +1,5 @@
 'use client';
-
+import axios from "axios";
 import { useState,useEffect } from 'react'
 //import { useSession } from 'next-auth/react'; 
 import { useRouter,useSearchParams } from 'next/navigation';
@@ -47,7 +47,13 @@ const UpdatePrompt = () => {
         }
 
       try {
-        const response = await fetch(`/api/prompt/${promptId}`,
+        const res = await axios.patch(`/api/prompt/${promptId}`, {
+          prompt: post.prompt,
+          tag: post.tag
+        });
+
+
+       /*  const response = await fetch(`/api/prompt/${promptId}`,
           {
             method: 'PATCH',
             body: JSON.stringify({
@@ -55,9 +61,9 @@ const UpdatePrompt = () => {
               tag: post.tag
             })
           }
-        )
-
-        if(response.ok){
+        ) */
+        const json = await res.data;
+        if(!json.errors){
           router.push("/");
         }
       } catch (error) {
