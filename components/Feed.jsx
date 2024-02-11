@@ -41,7 +41,7 @@ const Feed = () => {
 
       setMainPost(data);
       setPosts(data);
-      console.log(posts);
+      console.log(data);
     }
     if(searchText===""){
       console.log("Call!")
